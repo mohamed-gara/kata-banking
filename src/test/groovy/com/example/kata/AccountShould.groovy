@@ -2,17 +2,13 @@ package com.example.kata
 
 import spock.lang.Specification
 
-import static java.math.BigDecimal.ONE
-import static java.math.BigDecimal.TEN
-import static java.math.BigDecimal.ZERO
-
 class AccountShould extends Specification {
   def 'given existing balance is #existingBalance, when deposit #amount then resulted balance is #expectedBalance'() {
     given:
-      def sut = new Account(Money.of(existingBalance))
+      def sut = new Account(Amount.of(existingBalance))
 
     when:
-      def result = sut.deposit(Money.of(amount))
+      def result = sut.deposit(Amount.of(amount))
 
     then:
       result.balance.amount == expectedBalance
@@ -27,10 +23,10 @@ class AccountShould extends Specification {
 
   def 'given existing balance is #existingBalance, when withdraw #amount then resulted balance is #expectedBalance'() {
     given:
-      def sut = new Account(Money.of(existingBalance))
+      def sut = new Account(Amount.of(existingBalance))
 
     when:
-      def result = sut.withdraw(Money.of(amount))
+      def result = sut.withdraw(Amount.of(amount))
 
     then:
       result.balance.amount == expectedBalance

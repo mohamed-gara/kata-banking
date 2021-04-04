@@ -1,14 +1,14 @@
 package com.example.kata
 
 data class Account(
-  val balance: Money
+  val balance: Amount
 ) {
-  fun deposit(amount: Money): Account =
+  fun deposit(amount: Amount): Account =
     this.withBalanceIncrementedBy(amount)
 
-  fun withdraw(amount: Money): Account =
+  fun withdraw(amount: Amount): Account =
     this.withBalanceIncrementedBy(amount.negate())
 
-  private fun withBalanceIncrementedBy(amount: Money) =
+  private fun withBalanceIncrementedBy(amount: Amount) =
     copy(balance = this.balance.add(amount))
 }

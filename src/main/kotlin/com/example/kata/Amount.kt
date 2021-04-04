@@ -1,20 +1,20 @@
 package com.example.kata
 
-data class Money(
+data class Amount(
   val amount: Int
 ) {
-  fun negate(): Money {
+  fun negate(): Amount {
     return copy(amount = this.amount * -1)
   }
 
-  fun add(amount: Money): Money {
+  fun add(amount: Amount): Amount {
     return copy(amount = this.amount + amount.amount)
   }
 
   companion object {
     private @JvmStatic
-    fun of(amount: Int): Money {
-      return Money(amount)
+    fun of(amount: Int): Amount {
+      return Amount(amount)
     }
   }
 }
