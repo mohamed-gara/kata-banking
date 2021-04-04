@@ -1,13 +1,14 @@
 package com.example.kata
 
-import java.math.BigDecimal
-
 data class Account(
-  val balance: BigDecimal
+  val balance: Money
 ) {
-  fun deposit(amount: BigDecimal): Account = this.withBalanceIncrementedBy(amount)
+  fun deposit(amount: Money): Account =
+    this.withBalanceIncrementedBy(amount)
 
-  fun withdraw(amount: BigDecimal): Account = this.withBalanceIncrementedBy(amount.negate())
+  fun withdraw(amount: Money): Account =
+    this.withBalanceIncrementedBy(amount.negate())
 
-  private fun withBalanceIncrementedBy(amount: BigDecimal) = copy(balance = this.balance.add(amount))
+  private fun withBalanceIncrementedBy(amount: Money) =
+    copy(balance = this.balance.add(amount))
 }
