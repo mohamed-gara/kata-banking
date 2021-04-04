@@ -7,15 +7,15 @@ import static java.math.BigDecimal.TEN
 import static java.math.BigDecimal.ZERO
 
 class AccountShould extends Specification {
-  def 'given existing balance is #existingBalance, when deposit #amount then result in #expectedBalance'() {
-    given: 'existing balance is #existingBalance'
+  def 'given existing balance is #existingBalance, when deposit #amount then resulted balance is #expectedBalance'() {
+    given:
       def sut = new Account(existingBalance)
 
-    when: 'deposit #amount'
-      def result = sut.deposit(amount).getBalance()
+    when:
+      def result = sut.deposit(amount)
 
-    then: 'expected balance is #expectedBalance'
-      result == expectedBalance
+    then:
+      result.balance == expectedBalance
 
     where:
       existingBalance | amount | expectedBalance
@@ -25,15 +25,15 @@ class AccountShould extends Specification {
       TEN             | ONE    | TEN.add(ONE)
   }
 
-  def 'given existing balance is #existingBalance, when withdraw #amount then result in #expectedBalance'() {
-    given: 'existing balance is #existingBalance'
+  def 'given existing balance is #existingBalance, when withdraw #amount then resulted balance is #expectedBalance'() {
+    given:
       def sut = new Account(existingBalance)
 
-    when: 'deposit #amount'
-      def result = sut.withdraw(amount).getBalance()
+    when:
+      def result = sut.withdraw(amount)
 
-    then: 'expected balance is #expectedBalance'
-      result == expectedBalance
+    then:
+      result.balance == expectedBalance
 
     where:
       existingBalance | amount | expectedBalance
