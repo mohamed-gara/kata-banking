@@ -24,4 +24,21 @@ class AccountShould extends Specification {
       ONE             | ONE    | ONE.add(ONE)
       TEN             | ONE    | TEN.add(ONE)
   }
+
+  def 'given existing balance is #existingBalance, when withdraw #amount then result in #expectedBalance'() {
+    given: 'existing balance is #existingBalance'
+      def sut = new Account(existingBalance)
+
+    when: 'deposit #amount'
+      def result = sut.withdraw(amount).getBalance()
+
+    then: 'expected balance is #expectedBalance'
+      result == expectedBalance
+
+    where:
+      existingBalance | amount | expectedBalance
+      ZERO            | ONE    | ONE.negate()
+      ONE             | ONE    | ZERO
+      TEN             | ONE    | TEN.subtract(ONE)
+  }
 }
