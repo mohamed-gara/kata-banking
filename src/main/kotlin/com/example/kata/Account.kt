@@ -3,6 +3,9 @@ package com.example.kata
 import java.math.BigDecimal
 
 data class Account(
-  private val balance: BigDecimal
+  val balance: BigDecimal
 ) {
+  fun deposit(amount: BigDecimal): Account {
+    return copy(balance = this.balance.add(amount))
+  }
 }
